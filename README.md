@@ -6,7 +6,11 @@ Página web creada para la asignatura Tecnologías web con el objetivo de crear 
 - Gabriel Herrera Lozano
 - Eladio Carbonell Rodríguez
 
+## Normas de trabajo del repositorio
+Para trabajar en este repositorio deben seguirse las normas especificadas en el siguiente documento: [Normas](CONTRIBUTING.md)
+
 ## Guía de utilización de Laravel
 Para trabajar en este proyecto es necesario seguir la siguiente guía de utilización: [Guía](Documentation/Laravel_Guía.md)
 
-## [Referencias](Documentation/References.txt)
+## Referencias
+Para consultar las referencias de derechos de imagenes y rescursos utilizados: [Referencias](Documentation/References.txt)
