@@ -9,4 +9,5 @@ Este documento detalla las políticas para la realización del proyecto y asegur
 5. Las imágenes y demás recursos utilizados deben ser registradas en el archivo de [referencias](Documentation/References.txt)
 6. Las imágenes deben estar libres de dderechos de autor/imagen.
 7. Los colaboradores deben autoasignarse los issues antes de trabajar sobre ellos para hacer saber a los demás que ya se esta trabajando sobre este.
-8. El modo de programación será con ficheros .php con uso del framework "Laravel"
+8. El modo de programación será con ficheros .php con uso del framework "Laravel".
+9. La base de datos que se usará es sqlite para facilitar el trabajo y ahorrar el método de conexión a la misma.
