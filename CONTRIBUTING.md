@@ -11,3 +11,4 @@ Este documento detalla las políticas para la realización del proyecto y asegur
 7. Los colaboradores deben autoasignarse los issues antes de trabajar sobre ellos para hacer saber a los demás que ya se esta trabajando sobre este.
 8. El modo de programación será con ficheros .php con uso del framework "Laravel".
 9. La base de datos que se usará es sqlite para facilitar el trabajo y ahorrar el método de conexión a la misma.
+10. Los ficheros php dedicados al frontend estarán situados en el siguiente directorio: ./resources/views

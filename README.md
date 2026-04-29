@@ -13,4 +13,4 @@ Para trabajar en este repositorio deben seguirse las normas especificadas en el 
 Para trabajar en este proyecto es necesario seguir la siguiente guía de utilización: [Guía](Documentation/Laravel_Guía.md)
 
 ## Referencias
-Para consultar las referencias de derechos de imagenes y rescursos utilizados: [Referencias](Documentation/References.txt)
+Para consultar las referencias de derechos de imagenes y rescursos utilizados: [Referencias](Documentation/References.md)
