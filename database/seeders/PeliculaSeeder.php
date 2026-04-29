@@ -15,7 +15,7 @@ class PeliculaSeeder extends Seeder
     {
         Pelicula::create([
             'titulo' => 'Charge',
-            'descripcion' => 'En una distopía de escasez de energía, un hombre indigente irrumpe en una fábrica de baterías, pero pronto se encuentra confrontado por un droide de seguridad.',
+            'descripcion' => 'En un futuro distópico y gélido, un anciano solitario sobrevive en las profundidades de una ciudad tecnológica en ruinas. Su única posesión valiosa es una vieja batería robótica que utiliza para mantenerse con vida y dar energía a su refugio. Sin embargo, cuando la energía comienza a agotarse, se ve obligado a enfrentarse a la seguridad del sistema para conseguir una última carga, desencadenando una persecución trepidante donde la tecnología y la supervivencia humana chocan de forma espectacular.',
             'imagen_url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Charge-movie_poster.png/960px-Charge-movie_poster.png',
             'duracion' => 4
         ]);
@@ -29,7 +29,7 @@ class PeliculaSeeder extends Seeder
 
         Pelicula::create([
             'titulo' => 'Big Buck Bunny',
-            'descripcion' => 'El conejo que vive en un paraíso bucólico de bonitas praderas, árboles fruteros, pájaros y mariposas, es llevado al límite por la destrucción y crueldad de tres pequeños roedores.',
+            'descripcion' => 'Sigue la historia de un conejo gigante y de temperamento amigable cuya tranquila rutina matutina se ve arruinada por tres roedores molestos: Frank, Rinky y Gamera. Tras ser acosado y ver cómo maltratan a una inocente mariposa, el pacífico Buck decide que ya ha tenido suficiente. Con una ingeniosa serie de trampas y mucha determinación, el conejo prepara una venganza magistral para darles una lección que estos tres bribones nunca olvidarán.',
             'imagen_url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Big_buck_bunny_poster_big.jpg/960px-Big_buck_bunny_poster_big.jpg',
             'duracion' => 10
         ]);
@@ -57,14 +57,14 @@ class PeliculaSeeder extends Seeder
 
         Pelicula::create([
             'titulo' => 'Spring',
-            'descripcion' => 'Cuenta la historia de una chica pastora y de su perro. Ambos se enfrentan a espíritus para poder continuar con el ciclo de la vida. ',
+            'descripcion' => 'En un mundo de fantasía oscuro y desolado, una joven llamada Sintel encuentra y rescata a un pequeño dragón herido al que llama Scales. A medida que sanan sus heridas, se forma un vínculo inquebrantable entre ambos. Sin embargo, cuando un dragón adulto secuestra a Scales, Sintel se embarca en una peligrosa y solitaria búsqueda a través de desiertos y montañas heladas. Una historia emocionante sobre la esperanza, el sacrificio y la dura realidad del destino que te dejará sin aliento.',
             'imagen_url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/25/Spring2019AlphaPosterBlender.jpg/960px-Spring2019AlphaPosterBlender.jpg',
             'duracion' => 7
         ]);
 
         Pelicula::create([
             'titulo' => 'No me olvides',
-            'descripcion' => '"No me olvides" sigue el emotivo viaje de Baran, una periodista kurdo-estadounidense capturada por ISIS que escapa a la libertad junto a otras prisioneras.',
+            'descripcion' => 'Ambientada en una sabana africana mística y ancestral, la historia sigue a dos hermanas, Coa y Lali, cuya relación se ve puesta a prueba por la envidia y la ambición. Cuando una de ellas descubre una voz ancestral que emana de un antiguo y profundo hueco en la tierra, se desencadena una serie de eventos oscuros que mezclan la magia negra con la traición. Un relato visualmente sobrecogedor que explora cómo el deseo de poder puede corromper incluso los lazos de sangre más sagrados.',
             'imagen_url' => 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/DONT_FORGET_ME_2026_FILM_POSTER_%D9%BE%DB%86%D8%B3%D8%AA%DB%95%D8%B1%DB%8C_%D9%84%DB%95%D8%A8%DB%8C%D8%B1%D9%85_%D9%85%DB%95%DA%A9%DB%95.jpg/960px-DONT_FORGET_ME_2026_FILM_POSTER_%D9%BE%DB%86%D8%B3%D8%AA%DB%95%D8%B1%DB%8C_%D9%84%DB%95%D8%A8%DB%8C%D8%B1%D9%85_%D9%85%DB%95%DA%A9%DB%95.jpg',
             'duracion' => 70
         ]);
