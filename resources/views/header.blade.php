@@ -44,11 +44,11 @@
 
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto">
-                        <li class="nav-item"><a class="nav-link" href="{{ url('') }}">Cartelera</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url('.') }}">Cartelera</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{ url('/PONERAQUIENLACE') }}">Contacto</a></li>
                         @if(isset($usuario) && $usuario->es_admin)
                         <li class="nav-item">
-                            <a class="nav-link text-warning" href="{{ url('/admin') }}">Administración</a>
+                            <a class="nav-link text-warning" href="{{ url('/PONERAQUIENLACE') }}">Administración</a>
                         </li>
                         @endif
                     </ul>
@@ -56,28 +56,28 @@
                     <ul class="navbar-nav ms-auto">
                       @if(isset($usuario))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/perfil') }}">Perfil</a>
+                            <a class="nav-link" href="{{ url('/PONERAQUIENLACE') }}">Perfil</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-danger" href="{{ url('/logout') }}">Salir</a>
+                            <a class="nav-link text-danger" href="{{ url('/PONERAQUIENLACE') }}">Salir</a>
                         </li>
                       @else
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/login') }}">Entrar</a>
+                            <a class="nav-link" href="#formLogin" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="formLogin">Login</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link btn btn-outline-light btn-sm ms-lg-2 px-3" href="{{ url('/registro') }}">Registro</a>
+                            <a class="nav-link" href="#formRegistro" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="formRegistro">Registrarse</a>
                         </li>
                       @endif
                     </ul>
                 </div>
             </nav>
 
-            <div class="container p-0">
-              <div class="collapse" id="formLogin" data-bs-parent=".container">
-                  <div class="card card-body bg-dark text-white border-top-0">
-                      <form action="{{ url('/login') }}" method="POST" class="row g-3 justify-content-center">
-                          @csrf
+            <div class="container p-0" id="accesoUsuarios">
+                  <div class="collapse" id="formLogin" data-bs-parent="#accesoUsuarios">
+                    <div class="card card-body bg-dark text-white">
+                        <form method="POST" class="row g-3 justify-content-center">
+                            @csrf
                           <div class="col-md-4">
                               <input type="email" name="email" class="form-control" placeholder="Email" required>
                           </div>
@@ -85,16 +85,16 @@
                               <input type="password" name="password" class="form-control" placeholder="Contraseña" required>
                           </div>
                           <div class="col-md-2">
-                              <button type="submit" class="btn btn-primary w-100">Acceder</button>
+                              <button type="submit" class="btn btn-primary w-100">Entrar</button>
                           </div>
                       </form>
                   </div>
               </div>
 
-              <div class="collapse" id="formRegistro" data-bs-parent=".container">
-                  <div class="card card-body bg-dark text-white border-top-0 rounded-bottom">
-                      <form action="{{ url('/registro') }}" method="POST" class="row g-3">
-                          @csrf
+              <div class="collapse" id="formRegistro" data-bs-parent="#accesoUsuarios">
+                <div class="card card-body bg-dark text-white">
+                    <form method="POST" class="row g-3">
+                        @csrf
                           <div class="col-md-6">
                               <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
                           </div>
