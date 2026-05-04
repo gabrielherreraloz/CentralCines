@@ -14,3 +14,6 @@ Imagenes obtenidas de la siguiente web: [Wikimedia](https://commons.wikimedia.or
 - [No me olvides](https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/DONT_FORGET_ME_2026_FILM_POSTER_%D9%BE%DB%86%D8%B3%D8%AA%DB%95%D8%B1%DB%8C_%D9%84%DB%95%D8%A8%DB%8C%D8%B1%D9%85_%D9%85%DB%95%DA%A9%DB%95.jpg/960px-DONT_FORGET_ME_2026_FILM_POSTER_%D9%BE%DB%86%D8%B3%D8%AA%DB%95%D8%B1%DB%8C_%D9%84%DB%95%D8%A8%DB%8C%D8%B1%D9%85_%D9%85%DB%95%DA%A9%DB%95.jpg)
 - [Nobel Peace](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Film_Poster_of_Nobel_Peace.jpg/960px-Film_Poster_of_Nobel_Peace.jpg)
 
+- [Icono](https://cdn-icons-png.flaticon.com/512/860/860158.png)
+- [Fondo de pantalla](https://emoji.supply/wallpaper/?pattern=diamond&order=ordered&emoji=%25F0%259F%258E%25AC%25F0%259F%258D%25BF%25F0%259F%258E%25A5%25F0%259F%258E%259F%25EF%25B8%258F&texture=gradient&color=%234a0808&scale=0.85)
+- [Logotipo](https://canva.com)
