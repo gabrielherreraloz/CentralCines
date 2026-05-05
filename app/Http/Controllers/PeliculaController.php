@@ -18,8 +18,8 @@ class PeliculaController extends Controller
     {
         $pelicula = Pelicula::findOrFail($id);
         $fecha = $request->query('fecha_sesion');
-        $sesions = Sesion::where('id_pelicula', $id)->whereDate('horario', $fecha)->orderBy('horario', 'asc')->get();
+        $sesions_sala = Sesion::where('id_pelicula', $id)->whereDate('horario', $fecha)->orderBy('horario', 'asc')->get()->groupBy('id_sala');
 
-        return view('detalles', compact('pelicula', 'sesions', 'fecha'));
+        return view('detalles', compact('pelicula', 'sesions_sala', 'fecha'));
     }
 }
