@@ -13,13 +13,13 @@
                             <p class="card-text flex-grow-1">
                                 {{ Str::limit($pelicula->descripcion, 200, '...') }}
                             </p>
-                            <form action="{{ route('pelicula.show', $pelicula->id, ) }}" method="GET">
-                                <div class="row row-cols-md-2">
-                                    <div class="col">
+                            <form action="{{ route('pelicula.detalles', $pelicula->id, ) }}" method="GET">
+                                <div class="row g-2">
+                                    <div class="col-12 col-md-6">
                                         <input type="date" class="form-control mb-1" id="fecha" name="fecha_sesion" required>
                                     </div>
-                                    <div class="col">
-                                        <input type="submit" class="btn btn-info" value="Ver sesiones">
+                                    <div class="col-12 col-md-6">
+                                        <input type="submit" class="btn btn-info w-100" value="Ver sesiones">
                                     </div>
                                 </div>
                             </form>
