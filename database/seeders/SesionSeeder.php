@@ -17,7 +17,7 @@ class SesionSeeder extends Seeder
     public function run(): void
     {
         $peliculas = Pelicula::all();
-        $sala = Sala::first();
+        $salas = Sala::all();
 
         foreach ($peliculas as $pelicula) {
             
@@ -25,11 +25,14 @@ class SesionSeeder extends Seeder
 
             for ($dia = 1; $dia <= 15; $dia++) {
 
-                $horarioPase = $fechaInicio->copy()->addDays($dia);
+                foreach ($salas as $sala) {
 
-                for ($numero = 1; $numero <= 3; $numero++) {
-                    Sesion::create(['id_pelicula' => $pelicula->id, 'id_sala' => $sala->id, 'horario' => $horarioPase->toDateTimeString()]);
-                    $horarioPase->addHours(3);
+                    $horarioPase = $fechaInicio->copy()->addDays($dia);
+
+                    for ($numero = 1; $numero <= 3; $numero++) {
+                        Sesion::create(['id_pelicula' => $pelicula->id, 'id_sala' => $sala->id, 'horario' => $horarioPase->toDateTimeString()]);
+                        $horarioPase->addHours(3);
+                    }
                 }
             }
         }
