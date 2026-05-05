@@ -7,6 +7,7 @@ use Illuminate\Database\Seeder;
 use App\Models\Pelicula;
 use App\Models\Sala;
 use App\Models\Sesion;
+use Illuminate\Support\Carbon;
 
 class SesionSeeder extends Seeder
 {
@@ -15,13 +16,22 @@ class SesionSeeder extends Seeder
      */
     public function run(): void
     {
-        $peli = Pelicula::first();
+        $peliculas = Pelicula::all();
         $sala = Sala::first();
 
-        Sesion::create([
-            'id_pelicula' => $peli->id,
-            'id_sala' => $sala->id,
-            'horario' => '2026-05-01 20:00:00'
-        ]);
+        foreach ($peliculas as $pelicula) {
+            
+            $fechaInicio = Carbon::create(2026, 5, 1, 16, 0, 0);
+
+            for ($dia = 1; $dia <= 15; $dia++) {
+
+                $horarioPase = $fechaInicio->copy()->addDays($dia);
+
+                for ($numero = 1; $numero <= 3; $numero++) {
+                    Sesion::create(['id_pelicula' => $pelicula->id, 'id_sala' => $sala->id, 'horario' => $horarioPase->toDateTimeString()]);
+                    $horarioPase->addHours(3);
+                }
+            }
+        }
     }
 }
