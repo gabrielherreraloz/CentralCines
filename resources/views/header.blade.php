@@ -45,7 +45,7 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item"><a class="nav-link" href="{{ url('.') }}">Cartelera</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('/PONERAQUIENLACE') }}">Contacto</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('contacto')}}">Contacto</a></li>
                         @if(isset($usuario) && $usuario->es_admin)
                         <li class="nav-item">
                             <a class="nav-link text-warning" href="{{ url('/PONERAQUIENLACE') }}">Administración</a>

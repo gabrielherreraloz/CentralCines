@@ -23,9 +23,9 @@
                                 Sala {{$id_sala}}:
                             </strong> 
                             @foreach ($sesiones as $sesion)
-                                <button type="submit" class="btn btn-warning ms-3">
+                                <a type="submit" class="btn btn-warning ms-3" href="{{route('butacas.sesion', $sesion->id)}}">
                                     {{ \Carbon\Carbon::parse($sesion->horario)->format('H:i') }}
-                                </button>
+                                </a>
                             @endforeach
                         </div>
                         <br>
