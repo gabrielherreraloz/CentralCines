@@ -8,7 +8,7 @@
                         <small class="d-block text-secondary">Eladio Carbonell Rodríguez</small>
                     </div>
                     <div class="text-center">
-                        <a href="LINKPAGINACONTACTO" class="btn btn-outline-light mx-1 my-3">Contacto</a>
+                        <a href="{{route('contacto')}}" class="btn btn-outline-light mx-1 my-3">Contacto</a>
                         <a href="ENLACEAPDF" target="_blank" class="btn btn-outline-info mx-1 my-3">Informe (PDF)</a>
                     </div>
                     <div class="text-center">
