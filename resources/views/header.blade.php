@@ -22,7 +22,6 @@
                 width: auto;
             }
         </style>
-
       </head>
     <body>
         <div class="contaire text-center">
@@ -46,32 +45,59 @@
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item"><a class="nav-link" href="{{ url('.') }}">Cartelera</a></li>
                         <li class="nav-item"><a class="nav-link" href="{{route('contacto')}}">Contacto</a></li>
-                        @if(isset($usuario) && $usuario->es_admin)
-                        <li class="nav-item">
-                            <a class="nav-link text-warning" href="{{ url('/PONERAQUIENLACE') }}">Administración</a>
-                        </li>
-                        @endif
                     </ul>
 
                     <ul class="navbar-nav ms-auto">
-                      @if(isset($usuario))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/PONERAQUIENLACE') }}">Perfil</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-danger" href="{{ url('/PONERAQUIENLACE') }}">Salir</a>
-                        </li>
-                      @else
-                        <li class="nav-item">
-                            <a class="nav-link" href="#formLogin" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="formLogin">Login</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#formRegistro" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="formRegistro">Registrarse</a>
-                        </li>
-                      @endif
+                        @if(isset($usuario))
+                            <li class="nav-item">
+                                <button class="btn btn-outline-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuPrivado">
+                                    Bienvenido, {{ $usuario->nombre }}
+                                </button>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="#formLogin" data-bs-toggle="collapse" role="button">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#formRegistro" data-bs-toggle="collapse" role="button">Registrarse</a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </nav>
+
+            <!-- Aqui dejo la parte del menu lateral que solo se mostrará si el usuario está logueado -->
+          @if(isset($usuario))
+            <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="menuPrivado" aria-labelledby="menuPrivadoLabel">
+                <div class="offcanvas-header border-bottom border-secondary">
+                    <h5 class="offcanvas-title" id="menuPrivadoLabel">Panel de Usuario</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                
+                <div class="offcanvas-body d-flex flex-column">
+                    <div class="list-group list-group-flush mb-auto">
+                        <a href="{{ url('/perfil') }}" class="list-group-item list-group-item-action bg-dark text-white border-secondary">
+                            <i class="bi bi-person"></i> Mi Perfil
+                        </a>
+                        
+                        @if($usuario->es_admin)
+                        <a href="{{ url('/admin') }}" class="list-group-item list-group-item-action bg-dark text-warning border-secondary">
+                            <i class="bi bi-shield-lock"></i> Administración
+                        </a>
+                        @endif
+                        
+                        <a href="{{ url('/mis-entradas') }}" class="list-group-item list-group-item-action bg-dark text-white border-secondary">
+                            <i class="bi bi-ticket"></i> Mis Entradas
+                        </a>
+                    </div>
+                    <div class="mt-4 border-top pt-3 border-secondary">
+                        <a href="{{ url('/logout') }}" class="btn btn-danger w-100">
+                            Cerrar Sesión
+                        </a>
+                    </div>
+                </div>
+            </div>
+        @endif
 
             <div class="container p-0" id="accesoUsuarios">
                   <div class="collapse" id="formLogin" data-bs-parent="#accesoUsuarios">
@@ -114,3 +140,5 @@
                   </div>
               </div>
           </div>
+
+          
