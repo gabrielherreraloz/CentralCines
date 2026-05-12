@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('butacas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+
+            $table->unsignedBigInteger('id_sala');
             $table->integer('fila');
             $table->integer('asiento');
         });
