@@ -11,6 +11,11 @@
                         <a href="ENLACEAPDF" target="_blank" class="btn btn-outline-info mx-1 my-3">Informe (PDF)</a>
                     </div>
                     <div class="text-center">
+                        <div>
+                            <small class="text-secondary">
+                                <a href="{{ route('references') }}" class="text-secondary text-decoration-underline">Referencias</a>
+                            </small>
+                        </div>
                         <small class="text-secondary">Todos los derechos reservados</small>
                     </div>
                 </div>
