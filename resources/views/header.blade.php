@@ -22,10 +22,10 @@
                 width: auto;
             }
         </style>
-      </head>
+    </head>
     <body>
-        <div class="contaire text-center">
-          <header class="bg-dark py-3">
+        <div class="text-center">
+            <header class="bg-dark py-3">
                 <img src="{{ asset('../assets/logotipo.png') }}" alt="Logo Central Cines" class="logo-header">
 
                 @if(isset($_COOKIE['usuario']))
@@ -34,9 +34,9 @@
                     </div>
                 @endif
             </header>
-            
+                
             <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
-              <div class="container">
+            <div class="container">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -66,79 +66,77 @@
                 </div>
             </nav>
 
-            <!-- Aqui dejo la parte del menu lateral que solo se mostrará si el usuario está logueado -->
-          @if(isset($usuario))
-            <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="menuPrivado" aria-labelledby="menuPrivadoLabel">
-                <div class="offcanvas-header border-bottom border-secondary">
-                    <h5 class="offcanvas-title" id="menuPrivadoLabel">Panel de Usuario</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
-                
-                <div class="offcanvas-body d-flex flex-column">
-                    <div class="list-group list-group-flush mb-auto">
-                        <a href="{{ url('/perfil') }}" class="list-group-item list-group-item-action bg-dark text-white border-secondary">
-                            <i class="bi bi-person"></i> Mi Perfil
-                        </a>
-                        
-                        @if($usuario->es_admin)
-                        <a href="{{ url('/admin') }}" class="list-group-item list-group-item-action bg-dark text-warning border-secondary">
-                            <i class="bi bi-shield-lock"></i> Administración
-                        </a>
-                        @endif
-                        
-                        <a href="{{ url('/mis-entradas') }}" class="list-group-item list-group-item-action bg-dark text-white border-secondary">
-                            <i class="bi bi-ticket"></i> Mis Entradas
-                        </a>
+                <!-- Aqui dejo la parte del menu lateral que solo se mostrará si el usuario está logueado -->
+            @if(isset($usuario))
+                <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="menuPrivado" aria-labelledby="menuPrivadoLabel">
+                    <div class="offcanvas-header border-bottom border-secondary">
+                        <h5 class="offcanvas-title" id="menuPrivadoLabel">Panel de Usuario</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-                    <div class="mt-4 border-top pt-3 border-secondary">
-                        <a href="{{ url('/logout') }}" class="btn btn-danger w-100">
-                            Cerrar Sesión
-                        </a>
+                    
+                    <div class="offcanvas-body d-flex flex-column">
+                        <div class="list-group list-group-flush mb-auto">
+                            <a href="{{ url('/perfil') }}" class="list-group-item list-group-item-action bg-dark text-white border-secondary">
+                                <i class="bi bi-person"></i> Mi Perfil
+                            </a>
+                            
+                            @if($usuario->es_admin)
+                            <a href="{{ url('/admin') }}" class="list-group-item list-group-item-action bg-dark text-warning border-secondary">
+                                <i class="bi bi-shield-lock"></i> Administración
+                            </a>
+                            @endif
+                            
+                            <a href="{{ url('/mis-entradas') }}" class="list-group-item list-group-item-action bg-dark text-white border-secondary">
+                                <i class="bi bi-ticket"></i> Mis Entradas
+                            </a>
+                        </div>
+                        <div class="mt-4 border-top pt-3 border-secondary">
+                            <a href="{{ url('/logout') }}" class="btn btn-danger w-100">
+                                Cerrar Sesión
+                            </a>
+                        </div>
                     </div>
                 </div>
-            </div>
-        @endif
+            @endif
 
             <div class="container p-0" id="accesoUsuarios">
-                  <div class="collapse" id="formLogin" data-bs-parent="#accesoUsuarios">
+                <div class="collapse" id="formLogin" data-bs-parent="#accesoUsuarios">
                     <div class="card card-body bg-dark text-white">
                         <form method="POST" class="row g-3 justify-content-center">
                             @csrf
-                          <div class="col-md-4">
-                              <input type="email" name="email" class="form-control" placeholder="Email" required>
-                          </div>
-                          <div class="col-md-4">
-                              <input type="password" name="password" class="form-control" placeholder="Contraseña" required>
-                          </div>
-                          <div class="col-md-2">
-                              <button type="submit" class="btn btn-primary w-100">Entrar</button>
-                          </div>
-                      </form>
-                  </div>
-              </div>
+                            <div class="col-md-4">
+                                <input type="email" name="email" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="password" name="password" class="form-control" placeholder="Contraseña" required>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
 
-              <div class="collapse" id="formRegistro" data-bs-parent="#accesoUsuarios">
+            <div class="collapse" id="formRegistro" data-bs-parent="#accesoUsuarios">
                 <div class="card card-body bg-dark text-white">
                     <form method="POST" class="row g-3">
                         @csrf
-                          <div class="col-md-6">
-                              <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
-                          </div>
-                          <div class="col-md-6">
-                              <input type="text" name="apellidos" class="form-control" placeholder="Apellidos" required>
-                          </div>
-                          <div class="col-md-6">
-                              <input type="email" name="email" class="form-control" placeholder="Email" required>
-                          </div>
-                          <div class="col-md-6">
-                              <input type="password" name="contraseña" class="form-control" placeholder="Contraseña" required>
-                          </div>
-                          <div class="col-12 text-center">
-                              <button type="submit" class="btn btn-success px-5">Crear Cuenta</button>
-                          </div>
-                      </form>
-                  </div>
-              </div>
-          </div>
-
-          
+                        <div class="col-md-6">
+                            <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="apellidos" class="form-control" placeholder="Apellidos" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" name="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="password" name="contraseña" class="form-control" placeholder="Contraseña" required>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-success px-5">Crear Cuenta</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
