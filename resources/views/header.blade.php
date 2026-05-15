@@ -24,8 +24,8 @@
         </style>
     </head>
     <body>
-        <div class="contaire text-center">
-          <header class="bg-dark py-3">
+        <div class="text-center">
+            <header class="bg-dark py-3">
                 <img src="{{ asset('../assets/logotipo.png') }}" alt="Logo Central Cines" class="logo-header">
 
                 @if(isset($_COOKIE['usuario']))
@@ -34,111 +34,114 @@
                     </div>
                 @endif
             </header>
-            
-            <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
-                <div class="container">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav me-auto">
-                            <li class="nav-item"><a class="nav-link" href="{{ url('.') }}">Cartelera</a></li>
-                            <li class="nav-item"><a class="nav-link" href="{{route('contacto')}}">Contacto</a></li>
-                        </ul>
-
-                        <ul class="navbar-nav ms-auto">
-                            @if(isset($usuario))
-                                <li class="nav-item">
-                                    <button class="btn btn-outline-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuPrivado">
-                                        Bienvenido, {{ $usuario->nombre }}
-                                    </button>
-                                </li>
-                            @else
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#formLogin" data-bs-toggle="collapse" role="button">Login</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="#formRegistro" data-bs-toggle="collapse" role="button">Registrarse</a>
-                                </li>
-                            @endif
-                        </ul>
-                </div>
-                </nav>
-
-            <!-- Aqui dejo la parte del menu lateral que solo se mostrará si el usuario está logueado -->
-          @if(isset($usuario))
-            <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="menuPrivado" aria-labelledby="menuPrivadoLabel">
-                <div class="offcanvas-header border-bottom border-secondary">
-                    <h5 class="offcanvas-title" id="menuPrivadoLabel">Panel de Usuario</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                </div>
                 
-                <div class="offcanvas-body d-flex flex-column">
-                    <div class="list-group list-group-flush mb-auto">
-                        <a href="{{ url('/perfil') }}" class="list-group-item list-group-item-action bg-dark text-white border-secondary">
-                            <i class="bi bi-person"></i> Mi Perfil
-                        </a>
-                        
-                        @if($usuario->es_admin)
-                        <a href="{{ url('/admin') }}" class="list-group-item list-group-item-action bg-dark text-warning border-secondary">
-                            <i class="bi bi-shield-lock"></i> Administración
-                        </a>
-                        @endif
-                        
-                        <a href="{{ url('/mis-entradas') }}" class="list-group-item list-group-item-action bg-dark text-white border-secondary">
-                            <i class="bi bi-ticket"></i> Mis Entradas
-                        </a>
+            <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav me-auto">
+                        <li class="nav-item"><a class="nav-link" href="{{ url('.') }}">Cartelera</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{route('contacto')}}">Contacto</a></li>
+                    </ul>
+
+                    <ul class="navbar-nav ms-auto">
+                        @auth
+                            <li class="nav-item">
+                                <button class="btn btn-outline-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuPrivado">
+                                    Bienvenido, {{ Auth::user()->nombre }}
+                                </button>
+                            </li>
+                        @else
+                            <li class="nav-item">
+                                <a class="nav-link" href="#formLogin" data-bs-toggle="collapse" role="button">Login</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#formRegistro" data-bs-toggle="collapse" role="button">Registrarse</a>
+                            </li>
+                        @endauth
+                    </ul>
+                </div>
+            </nav>
+
+            <!-- Menu Lateral, solo se muestra si se ha inciado sesión -->
+            @auth
+                <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="menuPrivado" aria-labelledby="menuPrivadoLabel">
+                    <div class="offcanvas-header border-bottom border-secondary">
+                        <h5 class="offcanvas-title" id="menuPrivadoLabel">Panel de Usuario</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-                    <div class="mt-4 border-top pt-3 border-secondary">
-                        <a href="{{ url('/logout') }}" class="btn btn-danger w-100">
-                            Cerrar Sesión
-                        </a>
+                    
+                    <div class="offcanvas-body d-flex flex-column">
+                        <div class="list-group list-group-flush mb-auto">
+                            <a href="{{ url('/perfil') }}" class="list-group-item list-group-item-action bg-dark text-white border-secondary">
+                                <i class="bi bi-person"></i> Mi Perfil
+                            </a>
+                            
+                            @if(Auth::user()->admin)
+                            <a href="{{ url('/admin') }}" class="list-group-item list-group-item-action bg-dark text-warning border-secondary">
+                                <i class="bi bi-shield-lock"></i> Administración
+                            </a>
+                            @endif
+                            
+                            <a href="{{ url('/mis-entradas') }}" class="list-group-item list-group-item-action bg-dark text-white border-secondary">
+                                <i class="bi bi-ticket"></i> Mis Entradas
+                            </a>
+                        </div>
+                        <div class="mt-4 border-top pt-3 border-secondary">
+                            <form action="{{ route('usuario.cerrar_sesion') }}" method="POST" class="mt-4 border-top pt-3 border-secondary">
+                                @csrf
+                                <button type="submit" class="btn btn-danger w-100">
+                                    <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            @endauth
+
+            <!-- Menu Inicio Sesión -->
+            <div class="container p-0" id="accesoUsuarios">
+                <div class="collapse" id="formLogin" data-bs-parent="#accesoUsuarios">
+                    <div class="card card-body bg-dark text-white">
+                        <form class="row g-3 justify-content-center" action="{{ route('usuario.iniciar_sesion') }}" method="POST">
+                            @csrf
+                            <div class="col-md-4">
+                                <input type="email" name="email" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="password" name="password" class="form-control" placeholder="Contraseña" required>
+                            </div>
+                            <div class="col-md-2">
+                                <button type="submit" class="btn btn-primary w-100">Entrar</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-        @endif
 
-            <div class="container p-0" id="accesoUsuarios">
-                  <div class="collapse" id="formLogin" data-bs-parent="#accesoUsuarios">
-                    <div class="card card-body bg-dark text-white">
-                        <form method="POST" class="row g-3 justify-content-center">
-                            @csrf
-                          <div class="col-md-4">
-                              <input type="email" name="email" class="form-control" placeholder="Email" required>
-                          </div>
-                          <div class="col-md-4">
-                              <input type="password" name="password" class="form-control" placeholder="Contraseña" required>
-                          </div>
-                          <div class="col-md-2">
-                              <button type="submit" class="btn btn-primary w-100">Entrar</button>
-                          </div>
-                      </form>
-                  </div>
-              </div>
-
-              <div class="collapse" id="formRegistro" data-bs-parent="#accesoUsuarios">
+            <!-- Menu Registro -->
+            <div class="collapse" id="formRegistro" data-bs-parent="#accesoUsuarios">
                 <div class="card card-body bg-dark text-white">
                     <form method="POST" class="row g-3">
                         @csrf
-                          <div class="col-md-6">
-                              <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
-                          </div>
-                          <div class="col-md-6">
-                              <input type="text" name="apellidos" class="form-control" placeholder="Apellidos" required>
-                          </div>
-                          <div class="col-md-6">
-                              <input type="email" name="email" class="form-control" placeholder="Email" required>
-                          </div>
-                          <div class="col-md-6">
-                              <input type="password" name="contraseña" class="form-control" placeholder="Contraseña" required>
-                          </div>
-                          <div class="col-12 text-center">
-                              <button type="submit" class="btn btn-success px-5">Crear Cuenta</button>
-                          </div>
-                      </form>
-                  </div>
-              </div>
-          </div>
-
-          
+                        <div class="col-md-6">
+                            <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" name="apellidos" class="form-control" placeholder="Apellidos" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="email" name="email" class="form-control" placeholder="Email" required>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="password" name="contraseña" class="form-control" placeholder="Contraseña" required>
+                        </div>
+                        <div class="col-12 text-center">
+                            <button type="submit" class="btn btn-success px-5">Crear Cuenta</button>
+                        </div>
+                    </form>
+                </div>
+            </div>

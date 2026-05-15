@@ -16,9 +16,9 @@ return new class extends Migration
             $table->timestamps();
             $table->string('nombre');
             $table->string('apellidos');
-            $table->string('email');
-            $table->boolean('admin');
-            $table->string('contraseña');
+            $table->string('email')->unique();
+            $table->boolean('admin')->default(false);
+            $table->string('password');
         });
     }
 
