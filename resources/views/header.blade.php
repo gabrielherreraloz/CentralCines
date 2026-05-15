@@ -22,7 +22,7 @@
                 width: auto;
             }
         </style>
-      </head>
+    </head>
     <body>
         <div class="contaire text-center">
           <header class="bg-dark py-3">
@@ -36,35 +36,35 @@
             </header>
             
             <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
-              <div class="container">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+                <div class="container">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item"><a class="nav-link" href="{{ url('.') }}">Cartelera</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{route('contacto')}}">Contacto</a></li>
-                    </ul>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav me-auto">
+                            <li class="nav-item"><a class="nav-link" href="{{ url('.') }}">Cartelera</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{route('contacto')}}">Contacto</a></li>
+                        </ul>
 
-                    <ul class="navbar-nav ms-auto">
-                        @if(isset($usuario))
-                            <li class="nav-item">
-                                <button class="btn btn-outline-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuPrivado">
-                                    Bienvenido, {{ $usuario->nombre }}
-                                </button>
-                            </li>
-                        @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="#formLogin" data-bs-toggle="collapse" role="button">Login</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#formRegistro" data-bs-toggle="collapse" role="button">Registrarse</a>
-                            </li>
-                        @endif
-                    </ul>
+                        <ul class="navbar-nav ms-auto">
+                            @if(isset($usuario))
+                                <li class="nav-item">
+                                    <button class="btn btn-outline-warning" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuPrivado">
+                                        Bienvenido, {{ $usuario->nombre }}
+                                    </button>
+                                </li>
+                            @else
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#formLogin" data-bs-toggle="collapse" role="button">Login</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#formRegistro" data-bs-toggle="collapse" role="button">Registrarse</a>
+                                </li>
+                            @endif
+                        </ul>
                 </div>
-            </nav>
+                </nav>
 
             <!-- Aqui dejo la parte del menu lateral que solo se mostrará si el usuario está logueado -->
           @if(isset($usuario))

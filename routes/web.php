@@ -24,3 +24,5 @@ Route::post('/reservar', [ReservaController::class, 'store'])
 Route::post('/confirmar-compra',
     [ReservaController::class, 'confirmacion']
 )->name('confirmacion.compra');
+Route::post('/toggle-butaca', [ReservaController::class, 'toggleButaca'])
+    ->name('butaca.toggle');

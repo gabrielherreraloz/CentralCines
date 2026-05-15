@@ -28,4 +28,20 @@ class ButacaController extends Controller
             'butacasOcupadasIds'
         ));
     }
+
+    public function toggleButaca(Request $request)
+    {
+        $id = $request->id;
+        $seleccionadas = session()->get('seleccionadas', []);
+
+        if (in_array($id, $seleccionadas)) {
+            $seleccionadas = array_diff($seleccionadas, [$id]);
+        } else {
+            $seleccionadas[] = $id;
+        }
+
+        session()->put('seleccionadas', $seleccionadas);
+
+        return back();
+    }
 }
