@@ -1,14 +1,12 @@
 @include('header')
-
 <div class="container py-5">
     <div class="bg-dark rounded shadow p-3 p-md-4 mx-auto" style="max-width: 1100px;">
         <h4 class="text-white text-center mb-4">
             Sesión {{ $sesion->id }}
         </h4>
-      
+
         @for($fila = 5; $fila >= 1; $fila--)
             <div class="d-flex justify-content-center align-items-center mb-2 flex-nowrap">
-               
                 <div class="text-white me-3 fw-bold" style="width:90px;">
                     Fila {{ $fila }}
                 </div>
@@ -49,8 +47,7 @@
             </div>
         @endfor
         
-        <div class="bg-secondary text-white text-center py-2 rounded mt-4 mx-auto"
-             style="max-width: 500px;">
+        <div class="bg-secondary text-white text-center py-2 rounded mt-4 mx-auto" style="max-width: 500px;">
             PANTALLA
         </div>
         
