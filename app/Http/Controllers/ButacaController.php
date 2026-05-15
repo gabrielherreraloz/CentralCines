@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Sesion;
 use App\Models\Butaca;
 use App\Models\Entrada;
+use Illuminate\Http\Request;
 
 class ButacaController extends Controller
 {
