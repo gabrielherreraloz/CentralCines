@@ -12,12 +12,16 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('butacas', function (Blueprint $table) {
+
             $table->id();
             $table->timestamps();
 
-            $table->unsignedBigInteger('id_sala');
+            $table->foreignId('id_sala')
+            ->constrained('salas')
+            ->onDelete('cascade');
+
             $table->integer('fila');
-            $table->integer('asiento');
+            $table->integer('asiento');     
         });
     }
 

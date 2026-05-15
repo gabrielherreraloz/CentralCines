@@ -1,6 +1,7 @@
 @include('header')
 
 <style>
+
     .cinema-room {
         width: 95vw;
         max-width: 1200px;
@@ -30,21 +31,78 @@
     pointer-events: none;
 }
 
-    @media (max-width: 768px) {
-        .seat {
-            width: 34px;
-            height: 34px;
-            font-size: 11px;
-        }
+
+    .screen {
+    width: 100%;
+    max-width: 700px;   /* ajusta a tu sala real */
+    background: #1f1f1f;
+    color: white;
+    text-align: center;
+    padding: 12px 10px;
+    border-radius: 8px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+    margin: 0 auto;
+}
+
+
+
+@media (max-width: 1200px) {
+    .seat {
+        width: 44px;
+        height: 44px;
+        font-size: 12px;
     }
 
-    @media (max-width: 480px) {
-        .seat {
-            width: 26px;
-            height: 26px;
-            font-size: 10px;
-        }
+    .screen {
+        max-width: 600px;
+        font-size: 14px;
     }
+}
+
+@media (max-width: 992px) {
+    .seat {
+        width: 40px;
+        height: 40px;
+        font-size: 12px;
+    }
+
+    .screen {
+        max-width: 520px;
+        font-size: 13px;
+        letter-spacing: 3px;
+    }
+}
+@media (max-width: 768px) {
+    .seat {
+        width: 34px;
+        height: 34px;
+        font-size: 11px;
+    }
+
+    .screen {
+        max-width: 420px;
+        font-size: 12px;
+        letter-spacing: 2px;
+    }
+}
+
+@media (max-width: 480px) {
+    .seat {
+        width: 26px;
+        height: 26px;
+        font-size: 9px;
+    }
+
+    .screen {
+        max-width: 90%;
+        font-size: 11px;
+        letter-spacing: 2px;
+        padding: 10px;
+    }
+}
+
 </style>
 
 <div class="d-flex justify-content-center py-5">
@@ -55,6 +113,7 @@
         Selección de butacas - Sesión {{ $sesion->id }}
     </h2>
 
+    <div class="table-responsive">
     <!-- SALA -->
     @for($fila = 5; $fila >= 1; $fila--)
 
@@ -111,14 +170,20 @@
         </div>
 
     @endfor
+    
 
-    <!-- PANTALLA ABAJO -->
-    <div class="mt-4 bg-dark text-white text-center py-3 rounded shadow">
-        PANTALLA
+    <div class="d-flex justify-content-center mt-4">
+
+       <div class="screen">
+            PANTALLA
+        </div>
+
+    </div>
+
     </div>
 
     <!-- FORM RESERVA -->
-    <form method="POST" action="{{ route('reservar') }}" class="text-center mt-4">
+    <form method="POST" action="{{ route('confirmacion.compra') }}" class="text-center mt-4">
         @csrf
 
         <input type="hidden" name="butacas" id="butacasInput">

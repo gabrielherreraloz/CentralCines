@@ -15,9 +15,12 @@ Route::get('/contacto', function () {return view('contacto'); })->name('contacto
 Route::get('/sesion/{id}/butacas',
     [ButacaController::class, 'index']
 )->name('butacas.sesion');
-Route::post('/reservar', [ReservaController::class, 'store'])
-    ->name('reservar');
 Route::get('/referencias', function () {
     $contenido = file_get_contents(base_path('Documentation/References.md'));
     return view('references', compact('contenido'));
 })->name('references');
+Route::post('/reservar', [ReservaController::class, 'store'])
+    ->name('reservar');
+Route::post('/confirmar-compra',
+    [ReservaController::class, 'confirmacion']
+)->name('confirmacion.compra');

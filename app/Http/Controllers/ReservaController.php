@@ -3,31 +3,47 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Sesion;
 use App\Models\Entrada;
+use App\Models\Butaca;
 
 class ReservaController extends Controller
 {
+    // Página confirmación
+    public function confirmacion(Request $request)
+    {
+        $ids = explode(',', $request->butacas);
+
+        $butacas = Butaca::whereIn('id', $ids)->get();
+
+        $sesion = Sesion::with('pelicula')->findOrFail($request->sesion_id);
+
+        $total = count($butacas) * 8;
+
+        return view('confirmacion', [
+            'butacas' => $butacas,
+            'sesion_id' => $request->sesion_id,
+            'sesion' => $sesion,
+            'total' => $total
+        ]);
+    }
+
+    // Guardar compra
     public function store(Request $request)
     {
-        $request->validate([
-            'sesion_id' => 'required|integer',
-            'butacas' => 'required'
-        ]);
+        $ids = explode(',', $request->butacas);
 
-        $butacas = explode(',', $request->butacas);
+        foreach ($ids as $idButaca) {
 
-        foreach ($butacas as $idButaca) {
-
-            if (!\App\Models\Butaca::find($idButaca)) {
-            continue;
-    }
             Entrada::create([
-                'id_usuario' => 1, // ⚠️ luego lo cambias a auth()->id()
+                'id_usuario' => null, //cambiar a auth()->id()
                 'id_sesion' => $request->sesion_id,
                 'id_butaca' => $idButaca
             ]);
         }
 
-        return redirect()->back()->with('success', 'Reserva realizada');
+        return redirect()
+            ->route('butacas.sesion', $request->sesion_id)
+            ->with('success', 'Compra realizada');
     }
 }
