@@ -35,6 +35,7 @@
                 @endif
             </header>
                 
+            <!-- Menu Superior -->
             <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -76,7 +77,7 @@
                     
                     <div class="offcanvas-body d-flex flex-column">
                         <div class="list-group list-group-flush mb-auto">
-                            <a href="{{ url('/perfil') }}" class="list-group-item list-group-item-action bg-dark text-white border-secondary">
+                            <a href="{{ route('perfil') }}" class="list-group-item list-group-item-action bg-dark text-white border-secondary">
                                 <i class="bi bi-person"></i> Mi Perfil
                             </a>
                             
