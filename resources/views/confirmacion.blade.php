@@ -27,9 +27,7 @@
                 @endforeach
             </div>
         </div>
-
         <hr>
-
         <div class="text-center mt-4">
             <h3>
                 Total:
@@ -41,7 +39,6 @@
             <p class="text-secondary">
                 {{ count($butacas) }} butacas x 8€
             </p>
-
         </div>
 
         @if ($errors->any())
@@ -50,11 +47,8 @@
             </div>
         @endif
 
-        <form method="POST"
-            action="{{ route('reservar') }}"
-            class="text-center mt-4">
+        <form method="POST" action="{{ route('reservar') }}" class="text-center mt-4">
             @csrf
-
             <input type="hidden" name="butacas" value="{{ implode(',', $butacas->pluck('id')->toArray()) }}">
             <input type="hidden" name="sesion_id" value="{{ $sesion->id }}">
             <button type="submit" class="btn btn-success btn-lg px-5">
