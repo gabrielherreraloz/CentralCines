@@ -44,6 +44,10 @@
                         </div>
                     @endfor
                 </div>
+
+                <div class="text-white me-3 fw-bold" style="width:90px;">
+                    Fila {{ $fila }}
+                </div>
             </div>
         @endfor
         
