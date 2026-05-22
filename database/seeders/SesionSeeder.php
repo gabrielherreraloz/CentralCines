@@ -19,16 +19,13 @@ class SesionSeeder extends Seeder
         $salas = Sala::all();
 
         foreach ($peliculas as $pelicula) {
-            
-            $fechaInicio = Carbon::create(2026, 5, 1, 16, 0, 0);
+            $fechaInicio = Carbon::create(2026, 5, 25, 16, 0, 0);
 
-            for ($dia = 1; $dia <= 15; $dia++) {
-
-                foreach ($salas as $sala) {
-
+            for($dia = 1; $dia <= 15; $dia++){
+                foreach($salas as $sala){
                     $horarioPase = $fechaInicio->copy()->addDays($dia);
 
-                    for ($numero = 1; $numero <= 3; $numero++) {
+                    for($numero = 1; $numero <= 3; $numero++){
                         Sesion::create(['id_pelicula' => $pelicula->id, 'id_sala' => $sala->id, 'horario' => $horarioPase->toDateTimeString()]);
                         $horarioPase->addHours(3);
                     }
