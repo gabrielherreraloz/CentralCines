@@ -50,7 +50,7 @@
                 </div>
             </div>
         @endif
-        <div class="text-center">
+        <div class="text-center d-flex flex-column min-vh-100">
             <header class="bg-dark py-3">
                 <img src="{{ asset('../assets/logotipo.png') }}" alt="Logo Central Cines" class="logo-header">
 
