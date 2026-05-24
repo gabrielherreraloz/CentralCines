@@ -22,6 +22,7 @@ Route::post('/', [UsuarioController::class, 'inicio_sesion'])->name('usuario.ini
 Route::post('/logout', [UsuarioController::class, 'cerrar_sesion'])->name('usuario.cerrar_sesion');
 Route::get('/ver_perfil',[UsuarioController::class, 'ver_perfil'])->name('perfil');
 Route::post('/actualizar_perfil',[UsuarioController::class, 'actualizar_perfil'])->name('actualizar_perfil');
+Route::post('/registro', [UsuarioController::class, 'registrar'])->name('usuario.registrar');
 
 Route::post('/reservar', [ReservaController::class, 'store'])->name('reservar');
 Route::post('/confirmar-compra',[ReservaController::class, 'confirmacion'])->name('confirmacion.compra');

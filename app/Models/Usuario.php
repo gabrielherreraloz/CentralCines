@@ -15,6 +15,6 @@ class Usuario extends Authenticatable
         'apellidos',
         'email',
         'admin',
-        'contraseña',
+        'password',
     ];
 }

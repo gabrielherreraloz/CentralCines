@@ -22,6 +22,33 @@ class UsuarioController extends Controller
         return back()->withErrors(['email' => 'Las credenciales no coinciden con nuestros registros.',])->onlyInput('email');
     }
 
+    public function registrar(Request $request)
+    {
+        $request->validate([
+        'nombre' => ['required', 'string', 'max:255'],
+        'apellidos' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:usuarios,email'],
+        'password' => ['required', 'string', 'min:6', 'confirmed'],
+        ], [
+        'password.confirmed' => 'Las contraseñas no coinciden.',
+        'email.unique' => 'Este correo ya está registrado en nuestro sistema.',
+        'password.min' => 'La contraseña debe tener al menos 6 caracteres.'
+        ]);
+
+        $usuario = \App\Models\Usuario::create([
+            'nombre' => $request->nombre,
+            'apellidos' => $request->apellidos,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'admin' => false
+        ]);
+
+        Auth::login($usuario);
+        $request->session()->regenerate();
+   
+        return redirect('/')->with('status', 'Cuenta creada correctamente');
+    }
+
     public function cerrar_sesion(Request $request)
     {
         Auth::logout();
