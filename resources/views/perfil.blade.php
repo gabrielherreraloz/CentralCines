@@ -8,23 +8,6 @@
                         Datos de usuario
                     </h3>
                 </div>
-                @if ($errors->any())
-                    <div class="alert alert-danger mx-4 mt-3">
-                        <ul class="mb-0">
-                            @foreach ($errors->all() as $error)
-                                <div>
-                                    {{ $error }}
-                                </div>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-
-                @if (session('status'))
-                    <div class="alert alert-success mx-4 mt-3">
-                        {{ session('status') }}
-                    </div>
-                @endif
 
                 <div class="card-body p-3">
                     <form class="ms-4 me-4 mt-4" action="{{ route('actualizar_perfil') }}" method="post">
