@@ -10,12 +10,22 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     
         <style>
+            @keyframes desvanecerAlerta {
+                0% { opacity: 1; visibility: visible; }
+                80% { opacity: 1; visibility: visible; }
+                100% { opacity: 0; visibility: hidden; pointer-events: none; }
+            }
+            .alerta-temporal {
+                animation: desvanecerAlerta 5s forwards;
+            }
             body {
                 background-image: url("{{ asset('../assets/fondo.png') }}");
                 background-size: cover;
                 background-attachment: fixed;
                 background-position: center;
                 min-height: 100vh;
+                min-width: 320px;
+                overflow-x: hidden;
             }
             .logo-header {
                 max-height: 100px;
@@ -24,6 +34,22 @@
         </style>
     </head>
     <body>
+        @if ($errors->any())
+            <div class="alert alert-danger position-fixed top-0 end-0 m-4 shadow-lg alerta-temporal" role="alert" style="z-index: 1050; max-width: 350px;">
+                <ul class="mb-0 mt-2">
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        @if (session('status'))
+            <div class="alert alert-success position-fixed top-0 end-0 m-4 shadow-lg alerta-temporal" role="alert" style="z-index: 1050; max-width: 350px;">
+                <div class="mb-0 mt-1">
+                    {{ session('status') }}
+                </div>
+            </div>
+        @endif
         <div class="text-center">
             <header class="bg-dark py-3">
                 <img src="{{ asset('../assets/logotipo.png') }}" alt="Logo Central Cines" class="logo-header">
@@ -103,46 +129,49 @@
                 </div>
             @endauth
 
-            <!-- Menu Inicio Sesión -->
-            <div class="container p-0" id="accesoUsuarios">
+            <div class="container p-0" id="accesoUsuarios" style="max-width: 550px">
+                <!-- menu inicio de sesion -->
                 <div class="collapse" id="formLogin" data-bs-parent="#accesoUsuarios">
-                    <div class="card card-body bg-dark text-white">
+                    <div class="card card-body bg-dark text-white mb-3">
                         <form class="row g-3 justify-content-center" action="{{ route('usuario.iniciar_sesion') }}" method="POST">
                             @csrf
-                            <div class="col-md-4">
+                            <div class="col-md-5">
                                 <input type="email" name="email" class="form-control" placeholder="Email" required>
                             </div>
                             <div class="col-md-4">
                                 <input type="password" name="password" class="form-control" placeholder="Contraseña" required>
                             </div>
-                            <div class="col-md-2">
+                            <div class="col-md-3">
                                 <button type="submit" class="btn btn-primary w-100">Entrar</button>
                             </div>
                         </form>
                     </div>
                 </div>
-            </div>
 
-            <!-- Menu Registro -->
-            <div class="collapse" id="formRegistro" data-bs-parent="#accesoUsuarios">
-                <div class="card card-body bg-dark text-white">
-                    <form method="POST" class="row g-3">
-                        @csrf
-                        <div class="col-md-6">
-                            <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="text" name="apellidos" class="form-control" placeholder="Apellidos" required>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="email" name="email" class="form-control" placeholder="Email" required>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="password" name="contraseña" class="form-control" placeholder="Contraseña" required>
-                        </div>
-                        <div class="col-12 text-center">
-                            <button type="submit" class="btn btn-success px-5">Crear Cuenta</button>
-                        </div>
-                    </form>
+                <!-- menu registro -->
+                <div class="collapse" id="formRegistro" data-bs-parent="#accesoUsuarios">
+                    <div class="card card-body bg-dark text-white ">
+                        <form action="{{ route('usuario.registrar') }}" method="POST" class="row g-3">
+                            @csrf
+                            <div class="col-md-6">
+                                <input type="text" name="nombre" class="form-control" placeholder="Nombre" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="text" name="apellidos" class="form-control" placeholder="Apellidos" required>
+                            </div>
+                            <div class="col-md-12">
+                                <input type="email" name="email" class="form-control" placeholder="Email" required>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="password" name="password" class="form-control" placeholder="Contraseña" required minlength="6">
+                            </div>
+                            <div class="col-md-6">
+                                <input type="password" name="password_confirmation" class="form-control" placeholder="Repetir Contraseña" required>
+                            </div>
+                            <div class="col-12 text-center mt-4">
+                                <button type="submit" class="btn btn-success px-5">Crear Cuenta</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-            </div>
+        </div>
