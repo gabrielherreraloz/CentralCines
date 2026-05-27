@@ -20,15 +20,12 @@
                             {{ $entrada->sesion->pelicula->titulo }}
                         </h5>
                         <p class="mb-1">
-                            🏛 Sala: {{ $entrada->sesion->sala->nombre ?? 'Sin sala' }}
-                        </p>
-                        <p class="mb-1">
-                            📅 {{ $entrada->sesion->horario }}
+                            Fecha y Hora: {{ $entrada->sesion->horario }}
                         </p>
 
                         <p class="mb-2">
-                            🎟 Fila {{ $entrada->butaca->fila }} -
-                            Asiento {{ $entrada->butaca->asiento }}
+                            Fila: {{ $entrada->butaca->fila }} -
+                            Asiento: {{ $entrada->butaca->asiento }}
                         </p>
                         <form method="POST"
                               action="{{ route('entrada.cancelar', $entrada->id) }}">

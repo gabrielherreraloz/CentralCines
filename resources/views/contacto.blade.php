@@ -7,14 +7,14 @@
         {{-- QUIÉNES SOMOS --}}
         <div class="col-md-6">
             <div class="bg-dark rounded shadow p-4 h-100">
-                <h3 class="text-warning mb-3">👥 Quiénes somos 👥</h3>
+                <h3 class="text-warning mb-3">Quiénes somos</h3>
                 <p>
                     Somos el equipo de desarrollo de <strong>CentralCines</strong>, un proyecto de Tecnologías web
                     donde se pone a prueba nuestros conociemientos para crear una pagina web de manera semiprofesional
                 </p>
                 <p>
-                    El sistema que hemos permite a los usuarios consultar películas, seleccionar asientos y gestionar sus entradas
-                    de forma bastante sencilla y visual.
+                    El sistema que hemos hecho permite a los usuarios consultar películas, seleccionar asientos y 
+                    gestionar sus entradas de forma sencilla y visual.
                 </p>
                 <hr class="border-secondary">
                 <h5 class="text-light">Proyecto académico</h5>
@@ -26,7 +26,7 @@
         {{-- GITHUB --}}
         <div class="col-md-6">
             <div class="bg-dark rounded shadow p-4 h-100 text-center">
-                <h3 class="text-warning mb-3">💻 Repositorio 💻</h3>
+                <h3 class="text-warning mb-3">Repositorio</h3>
                 <p>
                     Accede al código fuente del proyecto CentralCines en GitHub.
                 </p>
