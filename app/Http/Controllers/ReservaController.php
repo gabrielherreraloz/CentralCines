@@ -7,75 +7,85 @@ use App\Models\Sesion;
 use App\Models\Entrada;
 use App\Models\Butaca;
 
-class ReservaController extends Controller
-{
-    // Página de confirmación
-    public function confirmacion(Request $request)
-    {
-        // VALIDACIÓN
+class ReservaController extends Controller{
+    public function confirmacion(Request $request){
         $request->validate([
             'butacas' => 'required'
-        ], [
-            'butacas.required' => 'Debes seleccionar al menos una butaca.'
         ]);
 
-        // Convertir string a array
-        $ids = explode(',', $request->butacas);
+        $ids = $request->butacas;
 
-        // Obtener butacas
+        if (is_string($ids)) {
+            $ids = explode(',', $ids);
+        }
+
+        $ids = array_filter($ids);
+
         $butacas = Butaca::whereIn('id', $ids)->get();
 
-        // Obtener sesión + película
-        $sesion = Sesion::with('pelicula')
-            ->findOrFail($request->sesion_id);
+        $sesion = Sesion::with('pelicula')->findOrFail($request->sesion_id);
 
-        // Calcular total
-        $total = count($butacas) * 8;
-
-        // Vista
         return view('confirmacion', [
             'butacas' => $butacas,
             'sesion' => $sesion,
-            'total' => $total
+            'total' => count($butacas) * 8
         ]);
     }
+    public function store(Request $request){
+        if (!auth()->check()) {
+            return redirect()
+                ->route('butacas.sesion', $request->sesion_id)
+                ->with('error', 'Debes iniciar sesión para reservar');
+        }
 
-    // Guardar compra
-    public function store(Request $request)
-    {
-        // VALIDACIÓN
         $request->validate([
+            'sesion_id' => 'required|exists:sesions,id',
             'butacas' => 'required'
-        ], [
-            'butacas.required' => 'No se ha seleccionado ninguna butaca.'
         ]);
 
-        // Convertir string a array
-        $ids = explode(',', $request->butacas);
+        $ids = $request->butacas;
+
+        if (is_string($ids)) {
+            $ids = explode(',', $ids);
+        }
+
+        $ids = array_filter($ids);
 
         foreach ($ids as $idButaca) {
 
-            // Evitar duplicados
             $existe = Entrada::where('id_sesion', $request->sesion_id)
                 ->where('id_butaca', $idButaca)
                 ->exists();
 
-            if ($existe) {
-                continue;
-            }
+            if ($existe) continue;
 
-            // Crear entrada
             Entrada::create([
-                'id_usuario' => null, // luego auth()->id()
+                'id_usuario' => auth()->id(),
                 'id_sesion' => $request->sesion_id,
                 'id_butaca' => $idButaca
             ]);
         }
-
         return redirect()
             ->route('butacas.sesion', $request->sesion_id)
             ->with('success', 'Compra realizada correctamente');
     }
+    public function misEntradas(){
+        $entradas = Entrada::with(['sesion.pelicula','sesion.sala','butaca'])
+            ->where('id_usuario', auth()->id())
+            ->get();
 
-    
+        return view('mis-entradas', compact('entradas'));
+    }
+    public function cancelarEntrada($id){
+        $entrada = Entrada::where('id', $id)
+            ->where('id_usuario', auth()->id())
+            ->firstOrFail();
+
+        $sesionId = $entrada->id_sesion;
+        $entrada->delete();
+        return redirect()
+            ->route('mis.entradas')
+            ->with('success', 'Entrada cancelada correctamente');
+    }
 }
+

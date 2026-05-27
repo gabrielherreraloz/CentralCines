@@ -1,56 +1,54 @@
 @include('header')
-<div class="container py-5">
-    <div class="row justify-content-center">
-        <div class="col-md-7">
-            <div class="card shadow-lg border-0 rounded-4">
-                <div class="card-header bg-dark text-white text-center">
-                    <h3>Contacto</h3>
-                </div>
+<div class="container py-5 text-white">
+    <div class="text-center mb-5">
+        <h1 class="fw-bold">Contacto</h1>
+    </div>
+    <div class="row justify-content-center g-4">
+        {{-- QUIÉNES SOMOS --}}
+        <div class="col-md-6">
+            <div class="bg-dark rounded shadow p-4 h-100">
+                <h3 class="text-warning mb-3">Quiénes somos</h3>
+                <p>
+                    Somos el equipo de desarrollo de <strong>CentralCines</strong>, un proyecto de Tecnologías web
+                    donde se pone a prueba nuestros conociemientos para crear una pagina web de manera semiprofesional
+                </p>
+                <p>
+                    El sistema que hemos hecho permite a los usuarios consultar películas, seleccionar asientos y 
+                    gestionar sus entradas de forma sencilla y visual.
+                </p>
+                <hr class="border-secondary">
+                <h5 class="text-light">Proyecto académico</h5>
+                <p class="text-secondary mb-0">
+                    Desarrollado como práctica de desarrollo web con Laravel y Bootstrap.
+                </p>
+            </div>
+        </div>
+        {{-- GITHUB --}}
+        <div class="col-md-6">
+            <div class="bg-dark rounded shadow p-4 h-100 text-center">
+                <h3 class="text-warning mb-3">Repositorio</h3>
+                <p>
+                    Accede al código fuente del proyecto CentralCines en GitHub.
+                </p>
 
-                <div class="card-body p-4">
-                    <form method="POST" action="/contacto">
-                        @csrf
-                        <div class="form-floating mb-3">
-                            <input type="text" name="nombre" id="input-nombre" placeholder=" " class="form-control" required>
-                            <label for="input-nombre">
-                                Nombre
-                            </label>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="text" name="apellidos" id="input-apellidos" placeholder=" " class="form-control" required>
-                            <label for="input-apellidos">
-                                Apellidos
-                            </label>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <input type="email" name="email" id="input-email" placeholder=" " class="form-control" required>
-                            <label for="input-email">
-                                Email
-                            </label>
-                        </div>
-
-                        <div class="form-floating mb-3">
-                            <textarea name="mensaje" id="input-mensaje" placeholder=" " class="form-control" rows="5" required></textarea>
-                            <label for="input-mensaje">
-                                Mensaje
-                            </label>
-                        </div>
-
-                        <div class="d-flex justify-content-between">
-                            <button type="reset" class="btn btn-outline-secondary">
-                                Limpiar
-                            </button>
-
-                            <button type="submit" class="btn btn-danger">
-                                Enviar mensaje
-                            </button>
-                        </div>
-                    </form>
-                </div>
+                <a href="https://github.com/gabrielherreraloz/CentralCines"
+                   target="_blank"
+                   class="btn btn-outline-light btn-lg mt-3">
+                    Ver en GitHub
+                </a>
+                <hr class="border-secondary my-4">
+                <p class="text-secondary small">
+                    Última versión del proyecto y control de cambios disponible públicamente.
+                </p>
             </div>
         </div>
     </div>
+    {{-- FOOTER INFO --}}
+    <div class="text-center mt-5 text-secondary">
+        <small>
+            CentralCines © {{ date('Y') }} — Sistema de gestión de cine
+        </small>
+    </div>
 </div>
 @include('footer')
+
