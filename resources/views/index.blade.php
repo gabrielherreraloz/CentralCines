@@ -1,4 +1,9 @@
 @include('header')
+@if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
 <div class="container py-5">
     <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3">
         @foreach ($peliculas as $pelicula)

@@ -61,7 +61,7 @@
                 @endif
             </header>
                 
-            <!-- Menu Superior -->
+            <!-- menu superior -->
             <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -93,7 +93,7 @@
                 </div>
             </nav>
 
-            <!-- Menu Lateral, solo se muestra si se ha inciado sesión -->
+            <!-- menu lateral, solo se muestra si se ha inciado sesión -->
             @auth
                 <div class="offcanvas offcanvas-end bg-dark text-white" tabindex="-1" id="menuPrivado" aria-labelledby="menuPrivadoLabel">
                     <div class="offcanvas-header border-bottom border-secondary">
@@ -108,7 +108,7 @@
                             </a>
                             
                             @if(Auth::user()->admin)
-                            <a href="{{ url('/admin') }}" class="list-group-item list-group-item-action bg-dark text-warning border-secondary">
+                            <a href="{{ route('administracion') }}" class="list-group-item list-group-item-action bg-dark text-warning border-secondary">
                                 <i class="bi bi-shield-lock"></i> Administración
                             </a>
                             @endif
