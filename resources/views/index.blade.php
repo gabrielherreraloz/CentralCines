@@ -9,7 +9,7 @@
         @foreach ($peliculas as $pelicula)
         <div class="col mb-4">
             <div class="card text-bg-dark h-100 shadow-sm">
-                <img src="{{asset($pelicula->imagen_url)}}" class="card-img-top" style="height: auto; object-fit: cover;" alt="Poster de la película '{{$pelicula->titulo}}'">
+                <img src="{{ asset($pelicula->imagen_url) }}" class="card-img-top" style="aspect-ratio: 2/3; object-fit: cover; width: 100%;" alt="'{{$pelicula->titulo}}'">                
                 <div class="card-body d-flex flex-column">
                     <h5 class="card-title">
                         {{ $pelicula->titulo }}
