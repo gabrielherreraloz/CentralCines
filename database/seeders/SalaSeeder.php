@@ -13,6 +13,10 @@ class SalaSeeder extends Seeder
     public function run(): void
     {
         Sala::create(['butacas' => 50]);
+        Sala::create(['butacas' => 50]);
+        Sala::create(['butacas' => 50]);
+        Sala::create(['butacas' => 50]);
+        Sala::create(['butacas' => 50]);
         Sala::create(['butacas' => 20]);
     }
 }
