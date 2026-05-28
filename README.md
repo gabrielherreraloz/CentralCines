@@ -6,6 +6,9 @@ Página web creada para la asignatura Tecnologías web con el objetivo de crear 
 - :bust_in_silhouette: Gabriel Herrera Lozano
 - :bust_in_silhouette: Eladio Carbonell Rodríguez
 
+## :page_facing_up: Documentación del proyecto
+Para visualizar la documentación y proceso a seguir para la realización de este proyecto: [Documentación](Documentation/como_se_hizo.pdf)
+
 ## :lock: Normas de trabajo del repositorio
 Para trabajar en este repositorio deben seguirse las normas especificadas en el siguiente documento: [Normas](CONTRIBUTING.md)
 
