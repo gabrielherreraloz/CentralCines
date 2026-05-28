@@ -43,7 +43,6 @@ class ReservaController extends Controller{
             Entrada::create(['id_usuario' => auth()->id(),'id_sesion' => $request->sesion_id,'id_butaca' => $idButaca]);
         }
 
-        $peliculas = Pelicula::all();
         return redirect('/')->with('status', 'La reserva se ha efectuado correctamente.');
     }
 

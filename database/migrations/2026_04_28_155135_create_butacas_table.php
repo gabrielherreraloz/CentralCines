@@ -15,11 +15,7 @@ return new class extends Migration
 
             $table->id();
             $table->timestamps();
-
-            $table->foreignId('id_sala')
-            ->constrained('salas')
-            ->onDelete('cascade');
-
+            $table->foreignId('id_sala')->constrained('salas')->onDelete('cascade');
             $table->integer('fila');
             $table->integer('asiento');     
         });

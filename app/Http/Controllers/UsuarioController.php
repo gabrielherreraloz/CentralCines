@@ -45,7 +45,6 @@ class UsuarioController extends Controller
 
         Auth::login($usuario);
         $request->session()->regenerate();
-   
         return redirect('/')->with('status', 'Cuenta creada correctamente');
     }
 
