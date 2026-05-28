@@ -26,28 +26,31 @@
         {{-- GITHUB --}}
         <div class="col-md-6">
             <div class="bg-dark rounded shadow p-4 h-100 text-center">
-                <h3 class="text-warning mb-3">Repositorio</h3>
+                <h3 class="text-warning mb-3">
+                    Repositorio
+                </h3>
                 <p>
                     Accede al código fuente del proyecto CentralCines en GitHub.
                 </p>
 
-                <a href="https://github.com/gabrielherreraloz/CentralCines"
-                   target="_blank"
-                   class="btn btn-outline-light btn-lg mt-3">
+                <a href="https://github.com/gabrielherreraloz/CentralCines "target="_blank" class="btn btn-outline-light btn-lg mt-3">
                     Ver en GitHub
                 </a>
                 <hr class="border-secondary my-4">
-                <p class="text-secondary small">
-                    Última versión del proyecto y control de cambios disponible públicamente.
+                <h3 class="text-warning mb-3">
+                    Contáctanos
+                </h3>
+                <p class="small">
+                    mariaremacho@correo.ugr.es
+                </p>
+                <p class="small">
+                    gabrielherrera@correo.ugr.es
+                </p>
+                <p class="small">
+                    eladio106@correo.ugr.es
                 </p>
             </div>
         </div>
-    </div>
-    {{-- FOOTER INFO --}}
-    <div class="text-center mt-5 text-secondary">
-        <small>
-            CentralCines © {{ date('Y') }} — Sistema de gestión de cine
-        </small>
     </div>
 </div>
 @include('footer')
