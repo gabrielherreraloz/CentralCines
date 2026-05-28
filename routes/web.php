@@ -15,13 +15,6 @@ Route::post('/sesion/crear', [PeliculaController::class, 'crearsesion'])->name('
 Route::delete('/sesion/eliminar/{id}', [PeliculaController::class, 'eliminarsesion'])->name('sesion.eliminarsesion');
 Route::get('/administracion', [PeliculaController::class, 'administracion'])->name('administracion');
 
-Route::get('/contacto', fn () => view('contacto'))->name('contacto');
-
-Route::get('/referencias', function (){
-    $contenido = file_get_contents(base_path('Documentation/References.md'));
-    return view('references', compact('contenido'));
-})->name('references');
-
 Route::get('/sesion/{id}/butacas', [ButacaController::class, 'index'])->name('butacas.sesion');
 
 Route::post('/', [UsuarioController::class, 'inicio_sesion'])->name('usuario.iniciar_sesion');
@@ -29,6 +22,8 @@ Route::post('/logout', [UsuarioController::class, 'cerrar_sesion'])->name('usuar
 Route::get('/ver_perfil', [UsuarioController::class, 'ver_perfil'])->name('perfil');
 Route::post('/actualizar_perfil', [UsuarioController::class, 'actualizar_perfil'])->name('actualizar_perfil');
 Route::post('/registro', [UsuarioController::class, 'registrar'])->name('usuario.registrar');
+
+Route::get('/contacto', fn () => view('contacto'))->name('contacto');
 
 Route::middleware('auth')->group(function () {
     Route::post('/confirmar-compra', [ReservaController::class, 'confirmacion'])->name('confirmacion.compra');
@@ -45,3 +40,8 @@ Route::middleware('auth')->group(function () {
 Route::get('/login', function () {
     return redirect()->back()->with('error', 'Debes iniciar sesión para continuar');
 })->name('login');
+
+Route::get('/referencias', function (){
+    $contenido = file_get_contents(base_path('Documentation/References.md'));
+    return view('references', compact('contenido'));
+})->name('references');
